@@ -2,8 +2,8 @@
 
 ## Análise de Indicadores Educacionais e Previsão de Risco de Defasagem
 
-Projeto desenvolvido para o Datathon da Passos Mágicos, com análise dos
-dados educacionais disponibilizados para os anos de 2022, 2023 e 2024.
+Projeto desenvolvido para o Datathon da Passos Mágicos, com análise dos dados
+educacionais disponibilizados para os anos de 2022, 2023 e 2024.
 
 O trabalho combina análise exploratória, acompanhamento longitudinal dos
 estudantes e Machine Learning para investigar padrões nos indicadores
@@ -56,9 +56,14 @@ de identificação da classe de interesse:
 A Regressão Logística identificou 48 dos 79 estudantes que efetivamente
 entraram em risco no conjunto de teste.
 
-Os resultados indicam capacidade preditiva limitada e, portanto, o modelo
-deve ser interpretado como ferramenta exploratória de apoio à priorização
-do acompanhamento, e não como mecanismo automático de decisão.
+Embora o baseline apresente maior acurácia, ele não identifica nenhum estudante
+da classe de risco. Por isso, a análise dos modelos considerou especialmente
+métricas relacionadas à identificação dessa classe, como recall, F1-score e
+ROC-AUC.
+
+Os resultados indicam capacidade preditiva limitada e, portanto, o modelo deve
+ser interpretado como ferramenta exploratória de apoio à priorização do
+acompanhamento, e não como mecanismo automático de decisão.
 
 ## Insight longitudinal
 
@@ -71,32 +76,11 @@ comparáveis.
 - a variação individual média foi de -0,01.
 
 Apesar da estabilidade do indicador agregado, as trajetórias individuais
-mostram movimentos relevantes de melhora e deterioração.
+mostram movimentos relevantes de melhora e redução do INDE.
 
 Esse resultado sugere que o acompanhamento educacional pode se beneficiar
 da combinação entre o nível atual dos indicadores, sua evolução longitudinal
 e a probabilidade estimada de risco futuro.
-
-## Tecnologias utilizadas
-
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Scikit-learn
-- Google Colab
-- Streamlit
-
-## Estrutura do projeto
-
-```text
-datathon-passos-magicos/
-│
-├── Datathon_Passos_Magicos_FINAL.ipynb
-├── README.md
-├── app.py                 # aplicação Streamlit
-├── requirements.txt       # dependências da aplicação
-└── arquivos do modelo     # adicionados na etapa de deploy
 
 ## Aplicação interativa
 
@@ -112,3 +96,54 @@ A aplicação utiliza a Regressão Logística desenvolvida no projeto e adota
 > **Importante:** a probabilidade apresentada é uma estimativa estatística
 > exploratória. O resultado não representa diagnóstico e não deve ser utilizado
 > isoladamente para decisões sobre estudantes.
+
+## Tecnologias utilizadas
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Joblib
+- Google Colab
+- Streamlit
+- GitHub
+
+## Estrutura do projeto
+
+```text
+datathon-passos-magicos/
+│
+├── Datathon_Passos_Magicos_FINAL.ipynb
+├── README.md
+├── app.py
+├── modelo_risco_defasagem.pkl
+└── requirements.txt
+```
+
+### Arquivos principais
+
+- `Datathon_Passos_Magicos_FINAL.ipynb`: análise exploratória, longitudinal e modelagem.
+- `app.py`: aplicação interativa desenvolvida em Streamlit.
+- `modelo_risco_defasagem.pkl`: pipeline treinado utilizado pela aplicação.
+- `requirements.txt`: dependências necessárias para execução da aplicação.
+
+## Limitações
+
+O conjunto utilizado para treinamento continha apenas 19 casos positivos de
+entrada futura em risco. Também foram observadas mudanças na distribuição dos
+indicadores entre os períodos analisados.
+
+Dessa forma, os resultados da modelagem devem ser considerados exploratórios e
+necessitam de validação com uma série histórica maior antes de eventual
+utilização operacional.
+
+## Considerações finais
+
+A análise evidencia a importância de combinar indicadores agregados com o
+acompanhamento longitudinal das trajetórias individuais.
+
+A estabilidade das médias gerais pode coexistir com mudanças relevantes na
+trajetória de estudantes específicos. Nesse contexto, análises longitudinais
+e modelos preditivos podem funcionar como instrumentos complementares para
+apoiar a identificação de casos que mereçam acompanhamento mais próximo.
