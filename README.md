@@ -97,3 +97,18 @@ datathon-passos-magicos/
 ├── app.py                 # aplicação Streamlit
 ├── requirements.txt       # dependências da aplicação
 └── arquivos do modelo     # adicionados na etapa de deploy
+
+## Aplicação interativa
+
+Foi desenvolvida uma aplicação em Streamlit que permite informar os indicadores
+IAA, IEG, IPS e IDA de um estudante e obter a probabilidade estimada pelo modelo
+de entrada futura em situação de defasagem.
+
+🔗 **[Acessar aplicação Streamlit](https://datathonpaappsmagicos-v7reatsgrejy6kkfkcrybt.streamlit.app/)**
+
+A aplicação utiliza a Regressão Logística desenvolvida no projeto e adota
+50% como limiar de referência para sinalização.
+
+> **Importante:** a probabilidade apresentada é uma estimativa estatística
+> exploratória. O resultado não representa diagnóstico e não deve ser utilizado
+> isoladamente para decisões sobre estudantes.
